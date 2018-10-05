@@ -12,8 +12,16 @@ $config['db']['dbname'] = 'thoksaman';
 
 $app = new \Slim\App(['settings' => $config]);
 
+$app->add(function ($req, $res, $next) {
+    $response = $next($req, $res);
+    return $response
+            ->withHeader('Access-Control-Allow-Origin', 'http://localhost:4200')
+            ->withHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Origin, Authorization')
+            ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
+});
+
 $app->add(new Tuupola\Middleware\JwtAuthentication([
-    "path" => "/api",
+    "path" => ["/admin", "/user"],
     "secret" => "supersecretkeyyoushouldnotcommittogithub"
 ]));
 
@@ -41,6 +49,8 @@ $container['db'] = function ($c) {
 $container['view'] = new \Slim\Views\PhpRenderer('../views/');
 
 require '../routes/home.route.php';
+
 require '../routes/token.route.php';
+require '../routes/admin.category.route.php';
 
 $app->run();

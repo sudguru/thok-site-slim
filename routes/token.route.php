@@ -39,15 +39,16 @@ $app->post("/token", function ($request, $response, $arguments) {
 
 $app->post("/users/authenticate", function ($request, $response, $arguments) {
     $data = $request->getParsedBody();
-    
+    $login = new \stdClass();
     $login->username = filter_var($data['username'], FILTER_SANITIZE_STRING);
     $login->password = filter_var($data['password'], FILTER_SANITIZE_STRING);
-    
-    
+
+
 
     try{
         $mapper = new User($this->db);
         $user = $mapper->validateUser($login);
+
         if($user) {
             $token = generateToken($user, $request);
             $result = [
@@ -62,7 +63,7 @@ $app->post("/users/authenticate", function ($request, $response, $arguments) {
                 'data' => null
             ];
         }
-        
+
     } catch(PDOException $e) {
         $this->logger->addInfo($e->getMessage());
         $result = [
