@@ -12,6 +12,11 @@ $config['db']['dbname'] = 'thoksaman';
 
 $app = new \Slim\App(['settings' => $config]);
 
+$app->add(new Tuupola\Middleware\JwtAuthentication([
+    "path" => ["/admin", "/user"],
+    "secret" => "supersecretkeyyoushouldnotcommittogithub"
+]));
+
 $app->add(function ($req, $res, $next) {
     $response = $next($req, $res);
     return $response
@@ -20,10 +25,7 @@ $app->add(function ($req, $res, $next) {
             ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
 });
 
-$app->add(new Tuupola\Middleware\JwtAuthentication([
-    "path" => ["/admin", "/user"],
-    "secret" => "supersecretkeyyoushouldnotcommittogithub"
-]));
+
 
 $container = $app->getContainer();
 
@@ -52,5 +54,8 @@ require '../routes/home.route.php';
 
 require '../routes/token.route.php';
 require '../routes/admin.category.route.php';
+require '../routes/admin.paymentmethod.route.php';
+require '../routes/admin.setting.route.php';
+require '../routes/admin.content.route.php';
 
 $app->run();

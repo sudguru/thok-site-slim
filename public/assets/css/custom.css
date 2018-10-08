@@ -1547,3 +1547,46 @@ header .navbar,
     	clear: left;
 	}
 }
+
+
+
+.noo-header.header-5 .navbar-wrapper {
+  padding-top: 15px;
+}
+
+
+
+.navbar-brand {
+  padding: 0 15px;
+}
+
+.noo-header.header-5 .noo-main-menu {
+    display: box;
+    width: 100%;
+    margin-top: 70px;
+    float: none!important;
+}
+
+.noo-header.header-5 .navbar {
+    min-height: 120px !important;
+    max-height: 120px !important;
+}
+
+.noo-header.header-5 .menu-position {
+    position: relative;
+    height: 197px;
+}
+
+
+@media (max-width: 991px) {
+  .noo-header.header-5 .menu-position {
+      height: 60px;
+  }
+  .noo-header.header-5 .navbar {
+      min-height: 60px !important;
+      max-height: 60px !important;
+  }
+  .noo_menu_canvas {
+    top: 40%;
+  }
+}

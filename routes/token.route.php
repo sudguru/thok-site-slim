@@ -46,7 +46,7 @@ $app->post("/users/authenticate", function ($request, $response, $arguments) {
 
 
     try{
-        $mapper = new User($this->db);
+        $mapper = new User($this->db, $this->logger);
         $user = $mapper->validateUser($login);
 
         if($user) {
