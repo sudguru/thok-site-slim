@@ -84,7 +84,12 @@ $app->put('/admin/content', function(Request $req, Response $res) {
     $c->id = filter_var($content['id'], FILTER_SANITIZE_NUMBER_INT);
     $c->title = filter_var($content['title'], FILTER_SANITIZE_STRING);
     $c->slug = filter_var($content['slug'], FILTER_SANITIZE_STRING);
-    $c->content = filter_var($content['content'], FILTER_SANITIZE_STRING);
+    // $c->content = filter_var($content['content'], FILTER_SANITIZE_STRING);
+    $c->content = $content['content'];
+    if ( get_magic_quotes_gpc() )
+        $c->content = htmlspecialchars( stripslashes( $c->content ) ) ;
+    else
+        $c->content = htmlspecialchars( $c->content ) ;
 
     try{
         $mapper = new Content($this->db, $this->logger);
@@ -108,6 +113,7 @@ $app->put('/admin/content', function(Request $req, Response $res) {
 
 $app->delete('/admin/content/{id}', function(Request $req, Response $res, $args) {
     $id = $args['id'];
+    $this->logger->addInfo('id' . $id);
     try{
         $mapper = new Content($this->db, $this->logger);
         $no_of_deleted_record = $mapper->deleteContent($id);
