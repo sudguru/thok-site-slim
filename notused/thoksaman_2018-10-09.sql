@@ -7,7 +7,7 @@
 #
 # Host: localhost (MySQL 5.7.17)
 # Database: thoksaman
-# Generation Time: 2018-10-08 14:10:47 +0000
+# Generation Time: 2018-10-09 14:01:11 +0000
 # ************************************************************
 
 
@@ -38,9 +38,14 @@ LOCK TABLES `banners` WRITE;
 
 INSERT INTO `banners` (`id`, `display_order`, `position`, `banner`)
 VALUES
-	(1,1,'Home Main','image_slider1.jpg'),
-	(2,2,'Home Main','image_slider2.jpg'),
-	(3,1,'Home Main','image_slider3.jpg');
+	(1,2,'Home Main','image_slider1.jpg'),
+	(2,3,'Home Main','image_slider2.jpg'),
+	(3,1,'Home Main','image_slider3.jpg'),
+	(4,1,'Home Sub Main','image_slider4.jpg'),
+	(5,2,'Home Sub Main','image_slider5.jpg'),
+	(6,3,'Home Sub Main','image_slider7.jpg'),
+	(7,4,'Home Sub Main','image_slider8.jpg'),
+	(9,5,'Home Sub Main','image_slider9.jpg');
 
 /*!40000 ALTER TABLE `banners` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -105,22 +110,57 @@ CREATE TABLE `contents` (
   `title` tinytext NOT NULL,
   `slug` tinytext NOT NULL,
   `content` mediumtext NOT NULL,
+  `content_type` varchar(30) DEFAULT '',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 LOCK TABLES `contents` WRITE;
 /*!40000 ALTER TABLE `contents` DISABLE KEYS */;
 
-INSERT INTO `contents` (`id`, `title`, `slug`, `content`)
+INSERT INTO `contents` (`id`, `title`, `slug`, `content`, `content_type`)
 VALUES
-	(2,'About Us','about-us','&lt;p&gt;asdf asdf asdf asdfasdfasdf alsdjflasdfdfasdf fasfasdfdfasf sda fsda f llkjl lkjl&lt;/p&gt;&lt;p&gt;kjhk kjhkjh kh k&lt;/p&gt;&lt;iframe class=&quot;ql-video&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;true&quot; src=&quot;https://www.youtube.com/embed/euM9O6Qaog8?showinfo=0&quot;&gt;&lt;/iframe&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;'),
-	(3,'How it Works ?','how-it-works','&lt;p&gt;Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatum nisi, quaerat sit esse aliquam eos vero minus sed. Est culpa reiciendis optio eveniet at explicabo harum tempore ut dicta et. Sem, gravida phasellus et etiam.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Lacus. Adipiscing tempor nunc fermentum pede montes fames eleifend justo rutrum ornare. Sollicitudin interdum interdum et condimentum. Posuere dapibus. Massa consequat. Mi sagittis.Sagittis fusce fermentum dictumst pharetra parturient scelerisque pellentesque justo lobortis sit primis nisl integer cursus Ipsum lobortis. Non cras ut hymenaeos class.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Tellus ante phasellus orci vivamus fames eu metus eget tincidunt tellus rhoncus.Ridiculus donec vehicula. Sit conubia velit fringilla lacus et laoreet integer. Dignissim aliquam sagittis cum etiam. Inceptos viverra consequat a parturient tempor netus metus, quam sem erat torquent convallis. Volutpat fermentum curae; Aptent nulla. Ornare nunc quisque hymenaeos.&lt;/p&gt;'),
-	(4,'Contact Us','contact-us','&lt;p&gt;Sem, gravida phasellus et etiam. Lacus. Adipiscing tempor nunc fermentum pede montes fames eleifend justo rutrum ornare. Sollicitudin interdum interdum et condimentum. Posuere dapibus. Massa consequat.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Mi sagittis.Sagittis fusce fermentum dictumst pharetra parturient scelerisque pellentesque justo lobortis sit primis nisl integer cursus Ipsum lobortis. Non cras ut hymenaeos class. Tellus ante phasellus orci vivamus fames eu metus eget tincidunt tellus rhoncus.Ridiculus donec vehicula. Sit conubia velit fringilla lacus et laoreet integer. Dignissim aliquam sagittis cum etiam.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Inceptos viverra consequat a parturient tempor netus metus, quam sem erat torquent convallis. Volutpat fermentum curae; Aptent nulla. Ornare nunc quisque hymenaeos.&lt;/p&gt;'),
-	(5,'FAQ','faq','&lt;p&gt;Sem, gravida phasellus et etiam. Lacus. Adipiscing tempor nunc fermentum pede montes fames eleifend justo rutrum ornare. Sollicitudin interdum interdum et condimentum. Posuere dapibus. Massa consequat.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Mi sagittis.Sagittis fusce fermentum dictumst pharetra parturient scelerisque pellentesque justo lobortis sit primis nisl integer cursus Ipsum lobortis. Non cras ut hymenaeos class. Tellus ante phasellus orci vivamus fames eu metus eget tincidunt tellus rhoncus.Ridiculus donec vehicula.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Sit conubia velit fringilla lacus et laoreet integer. Dignissim aliquam sagittis cum etiam. Inceptos viverra consequat a parturient tempor netus metus, quam sem erat torquent convallis. Volutpat fermentum curae; Aptent nulla. Ornare nunc quisque hymenaeos.&lt;/p&gt;'),
-	(6,'Terms & Conditions','terms-conditions','&lt;p&gt;Sem, gravida phasellus et etiam. Lacus. Adipiscing tempor nunc fermentum pede montes fames eleifend justo rutrum ornare. &lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Sollicitudin interdum interdum et condimentum. Posuere dapibus. Massa consequat. Mi sagittis.Sagittis fusce fermentum dictumst pharetra parturient scelerisque pellentesque justo lobortis sit primis nisl integer cursus Ipsum lobortis. Non cras ut hymenaeos class. Tellus ante phasellus orci vivamus fames eu metus eget tincidunt tellus rhoncus.Ridiculus donec vehicula. Sit conubia velit fringilla lacus et laoreet integer. Dignissim aliquam sagittis cum etiam. &lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Inceptos viverra consequat a parturient tempor netus metus, quam sem erat torquent convallis. Volutpat fermentum curae; Aptent nulla. Ornare nunc quisque hymenaeos.&lt;/p&gt;'),
-	(7,'Privacy Policy','privacy-policy','&lt;p&gt;Sem, gravida phasellus et etiam. Lacus. Adipiscing tempor nunc fermentum pede montes fames eleifend justo rutrum ornare. Sollicitudin interdum interdum et condimentum. Posuere dapibus. Massa consequat.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Mi sagittis.Sagittis fusce fermentum dictumst pharetra parturient scelerisque pellentesque justo lobortis sit primis nisl integer cursus Ipsum lobortis. Non cras ut hymenaeos class. Tellus ante phasellus orci vivamus fames eu metus eget tincidunt tellus rhoncus.Ridiculus donec vehicula.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Sit conubia velit fringilla lacus et laoreet integer. Dignissim aliquam sagittis cum etiam. Inceptos viverra consequat a parturient tempor netus metus, quam sem erat torquent convallis. Volutpat fermentum curae; Aptent nulla. Ornare nunc quisque hymenaeos.&lt;/p&gt;');
+	(2,'About Us','about-us','&lt;p&gt;asdf asdf asdf asdfasdfasdf alsdjflasdfdfasdf fasfasdfdfasf sda fsda f llkjl lkjl&lt;/p&gt;&lt;p&gt;kjhk kjhkjh kh k&lt;/p&gt;&lt;iframe class=&quot;ql-video&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;true&quot; src=&quot;https://www.youtube.com/embed/euM9O6Qaog8?showinfo=0&quot;&gt;&lt;/iframe&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;','Info'),
+	(3,'How it Works ?','how-it-works','&lt;p&gt;Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatum nisi, quaerat sit esse aliquam eos vero minus sed. Est culpa reiciendis optio eveniet at explicabo harum tempore ut dicta et. Sem, gravida phasellus et etiam.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Lacus. Adipiscing tempor nunc fermentum pede montes fames eleifend justo rutrum ornare. Sollicitudin interdum interdum et condimentum. Posuere dapibus. Massa consequat. Mi sagittis.Sagittis fusce fermentum dictumst pharetra parturient scelerisque pellentesque justo lobortis sit primis nisl integer cursus Ipsum lobortis. Non cras ut hymenaeos class.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Tellus ante phasellus orci vivamus fames eu metus eget tincidunt tellus rhoncus.Ridiculus donec vehicula. Sit conubia velit fringilla lacus et laoreet integer. Dignissim aliquam sagittis cum etiam. Inceptos viverra consequat a parturient tempor netus metus, quam sem erat torquent convallis. Volutpat fermentum curae; Aptent nulla. Ornare nunc quisque hymenaeos.&lt;/p&gt;','Info'),
+	(4,'Contact Us','contact-us','&lt;p&gt;Sem, gravida phasellus et etiam. Lacus. Adipiscing tempor nunc fermentum pede montes fames eleifend justo rutrum ornare. Sollicitudin interdum interdum et condimentum. Posuere dapibus. Massa consequat.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Mi sagittis.Sagittis fusce fermentum dictumst pharetra parturient scelerisque pellentesque justo lobortis sit primis nisl integer cursus Ipsum lobortis. Non cras ut hymenaeos class. Tellus ante phasellus orci vivamus fames eu metus eget tincidunt tellus rhoncus.Ridiculus donec vehicula. Sit conubia velit fringilla lacus et laoreet integer. Dignissim aliquam sagittis cum etiam.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Inceptos viverra consequat a parturient tempor netus metus, quam sem erat torquent convallis. Volutpat fermentum curae; Aptent nulla. Ornare nunc quisque hymenaeos.&lt;/p&gt;','Info'),
+	(5,'FAQ','faq','&lt;p&gt;Sem, gravida phasellus et etiam. Lacus. Adipiscing tempor nunc fermentum pede montes fames eleifend justo rutrum ornare. Sollicitudin interdum interdum et condimentum. Posuere dapibus. Massa consequat.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Mi sagittis.Sagittis fusce fermentum dictumst pharetra parturient scelerisque pellentesque justo lobortis sit primis nisl integer cursus Ipsum lobortis. Non cras ut hymenaeos class. Tellus ante phasellus orci vivamus fames eu metus eget tincidunt tellus rhoncus.Ridiculus donec vehicula.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Sit conubia velit fringilla lacus et laoreet integer. Dignissim aliquam sagittis cum etiam. Inceptos viverra consequat a parturient tempor netus metus, quam sem erat torquent convallis. Volutpat fermentum curae; Aptent nulla. Ornare nunc quisque hymenaeos.&lt;/p&gt;','Info'),
+	(6,'Terms & Conditions','terms-conditions','&lt;p&gt;Sem, gravida phasellus et etiam. Lacus. Adipiscing tempor nunc fermentum pede montes fames eleifend justo rutrum ornare.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Sollicitudin interdum interdum et condimentum. Posuere dapibus. Massa consequat. Mi sagittis.Sagittis fusce fermentum dictumst pharetra parturient scelerisque pellentesque justo lobortis sit primis nisl integer cursus Ipsum lobortis. Non cras ut hymenaeos class. Tellus ante phasellus orci vivamus fames eu metus eget tincidunt tellus rhoncus.Ridiculus donec vehicula. Sit conubia velit fringilla lacus et laoreet integer. Dignissim aliquam sagittis cum etiam.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Inceptos viverra consequat a parturient tempor netus metus, quam sem erat torquent convallis. Volutpat fermentum curae; Aptent nulla. Ornare nunc quisque hymenaeos.&lt;/p&gt;','Info'),
+	(7,'Privacy Policy','privacy-policy','&lt;p&gt;Sem, gravida phasellus et etiam. Lacus. Adipiscing tempor nunc fermentum pede montes fames eleifend justo rutrum ornare. Sollicitudin interdum interdum et condimentum. Posuere dapibus. Massa consequat.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Mi sagittis.Sagittis fusce fermentum dictumst pharetra parturient scelerisque pellentesque justo lobortis sit primis nisl integer cursus Ipsum lobortis. Non cras ut hymenaeos class. Tellus ante phasellus orci vivamus fames eu metus eget tincidunt tellus rhoncus.Ridiculus donec vehicula.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Sit conubia velit fringilla lacus et laoreet integer. Dignissim aliquam sagittis cum etiam. Inceptos viverra consequat a parturient tempor netus metus, quam sem erat torquent convallis. Volutpat fermentum curae; Aptent nulla. Ornare nunc quisque hymenaeos.&lt;/p&gt;','Info'),
+	(8,'This is a blog','this-is-a-blog','&lt;p&gt;Yeah blog!!!!&lt;/p&gt;','Blog');
 
 /*!40000 ALTER TABLE `contents` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table outlets
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `outlets`;
+
+CREATE TABLE `outlets` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `outlet` varchar(100) NOT NULL DEFAULT '',
+  `description` mediumtext,
+  `contact_person` varchar(100) NOT NULL DEFAULT '',
+  `address` text,
+  `phone` text,
+  `email` text,
+  `viber` varchar(30) DEFAULT '',
+  `whatsapp` varchar(30) DEFAULT '',
+  `skype` varchar(30) DEFAULT '',
+  `lat` decimal(15,12) DEFAULT NULL,
+  `lng` decimal(15,12) DEFAULT NULL,
+  `slug` varchar(100) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+LOCK TABLES `outlets` WRITE;
+/*!40000 ALTER TABLE `outlets` DISABLE KEYS */;
+
+INSERT INTO `outlets` (`id`, `outlet`, `description`, `contact_person`, `address`, `phone`, `email`, `viber`, `whatsapp`, `skype`, `lat`, `lng`, `slug`)
+VALUES
+	(1,'Main Outlet','Main Outlet\n','Binod Koirala','Banewore','98774774',NULL,'9876564646','9876564646','9876564646',27.721225100000,85.299318000000,'');
+
+/*!40000 ALTER TABLE `outlets` ENABLE KEYS */;
 UNLOCK TABLES;
 
 
