@@ -17,3 +17,4 @@
 [2018-10-08 09:09:29] my_logger.INFO: FAQ [] []
 [2018-10-08 09:09:47] my_logger.INFO: Terms & Conditions [] []
 [2018-10-08 09:10:46] my_logger.INFO: Privacy Policy [] []
+[2018-10-08 16:58:41] my_logger.INFO: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'thoksaman.banners' doesn't exist [] []
