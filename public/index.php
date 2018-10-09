@@ -58,5 +58,6 @@ require '../routes/admin.paymentmethod.route.php';
 require '../routes/admin.setting.route.php';
 require '../routes/admin.content.route.php';
 require '../routes/admin.banner.route.php';
+require '../routes/admin.outlet.route.php';
 
 $app->run();

@@ -76,6 +76,29 @@ $app->put('/admin/banner', function(Request $req, Response $res) {
     return $res->withJson($result);
 });
 
+$app->post('/admin/reorder', function(Request $req, Response $res) {
+    $data = $req->getParsedBody();
+    $banners = $data['banners'];
+    try{
+        $mapper = new Banner($this->db, $this->logger);
+        $mapper->reorder($banners);
+        $result = [
+            'status' => 200,
+            'error' => null,
+            'data' => 'ok'
+        ];
+    } catch(PDOException $e) {
+        $this->logger->addInfo($e->getMessage());
+        $result = [
+            'status' => 500,
+            'error' => $e->getMessage(),
+            'data' => null
+        ];
+    }
+
+    return $res->withJson($result);
+});
+
 $app->delete('/admin/banner/{id}', function(Request $req, Response $res, $args) {
     $id = $args['id'];
     try{
@@ -121,7 +144,7 @@ $app->post('/admin/uploadbanner', function(Request $request, Response $response)
     $imagedata = base64_decode($img);
     $file = $upload_dir . $filename;
     try{
-        $mapper = new Category($this->db, $this->logger);
+        $mapper = new Banner($this->db, $this->logger);
         $no_of_updated_record = $mapper->addBanner($filename, $position, $id);
         $this->logger->addInfo('banner updated ' . $no_of_updated_record);
 

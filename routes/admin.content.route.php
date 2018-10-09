@@ -55,8 +55,13 @@ $app->post('/admin/content', function(Request $req, Response $res) {
     $c = new \stdClass();
     $c->title = filter_var($content['title'], FILTER_SANITIZE_STRING);
     $c->slug = filter_var($content['slug'], FILTER_SANITIZE_STRING);
-    $c->content = filter_var($content['content'], FILTER_SANITIZE_STRING);
-    $this->logger->addInfo($c->title);
+    $c->content = $content['content'];
+    $c->content_type = filter_var($content['content_type'], FILTER_SANITIZE_STRING);
+    if ( get_magic_quotes_gpc() )
+        $c->content = htmlspecialchars( stripslashes( $c->content ) ) ;
+    else
+        $c->content = htmlspecialchars( $c->content ) ;
+
     try{
         $mapper = new Content($this->db, $this->logger);
         $content = $mapper->saveContent($c);
@@ -86,6 +91,7 @@ $app->put('/admin/content', function(Request $req, Response $res) {
     $c->slug = filter_var($content['slug'], FILTER_SANITIZE_STRING);
     // $c->content = filter_var($content['content'], FILTER_SANITIZE_STRING);
     $c->content = $content['content'];
+    $c->content_type = filter_var($content['content_type'], FILTER_SANITIZE_STRING);
     if ( get_magic_quotes_gpc() )
         $c->content = htmlspecialchars( stripslashes( $c->content ) ) ;
     else
