@@ -52,6 +52,7 @@ $container['view'] = new \Slim\Views\PhpRenderer('../views/');
 
 require '../routes/home.route.php';
 
+
 require '../routes/token.route.php';
 require '../routes/admin.category.route.php';
 require '../routes/admin.paymentmethod.route.php';

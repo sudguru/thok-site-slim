@@ -8,26 +8,26 @@
 							<img src="assets/images/logo.png" alt="" />
 						</a>
 						<p>
-							XXMaecenas tristique gravida, odio et sagi ttis justo. Suspendisse ultricies nisi veafn. onec dictum non nulla ut lobortis tellus. 
+							<?= $setting->description; ?>
 						</p>
 					</div>
 				</div>
 				<div class="widget widget_noo_social"> 
 					<div class="noo_social">
 						<div class="social-all">
-							<a href="#" class="fa fa-facebook"></a>
-							<a href="#" class="fa fa-google-plus"></a>
-							<a href="#" class="fa fa-twitter"></a>
-							<a href="#" class="fa fa-youtube"></a>
-							<a href="#" class="fa fa-skype"></a>
+							<a href="#" style="color: #3b5999" class="fab fa-facebook-f"></a>
+							<a href="#" style="color: #dd4b39" class="fab fa-google-plus-g"></a>
+							<a href="#" style="color: #55acee" class="fab fa-twitter"></a>
+							<a href="#" style="color: #cd201f" class="fab fa-youtube"></a>
+							
 						</div>
 					</div>
 				</div>
 				<div class="widget widget_text">
 					<div class="textwidget">
 						<div class="copyright">
-							2015 Oganici.<br/>
-							Designed with <i class="fa fa-heart-o"></i> by TK-Themes.
+							<?= date('Y'); ?> <?= $setting->site_name; ?><br/>
+							Designed with <i class="fa fa-heart-o"></i> by SG.
 						</div>
 					</div>
 				</div>
@@ -37,18 +37,22 @@
 					<h4 class="widget-title">Contact</h4> 
 					<div class="textwidget">
 						<h5>Address</h5>
-						<p>No 13, Sky Tower Street, New York, USA</p>
+						<p><?= $setting->address; ?></p>
 						<h5>Hotline</h5>
 						<p>
-							<a href="#">(+844) 123 456 78</a><br/>
-							<a href="#">(+844) 888 97989</a>
+							<a href="#"><?= $setting->phone1; ?></a><br/>
+							<a href="#"><?= $setting->phone2; ?></a>
 						</p>
 						<h5>Email</h5>
 						<p>
 							<a href="mailto:contact@organicistore.com">
-								contact@organicistore.com
+								<?= $setting->email; ?>
 							</a>
 						</p>
+						<h5>Live Chat</h5>
+						<i style="color: #00AFF0" class="fab fa-skype"></i> <?= $setting->skype; ?><br/>
+						<i style="color: #665CAC" class="fab fa-viber"></i> <?= $setting->viber; ?><br/>
+						<i style="color: #25D366" class="fab fa-whatsapp"></i> <?= $setting->whatsapp; ?>
 					</div>
 				</div>
 			</div>

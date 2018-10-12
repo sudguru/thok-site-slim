@@ -41,6 +41,13 @@ $app->put('/admin/setting', function(Request $req, Response $res) {
     $s->email = filter_var($setting['email'], FILTER_SANITIZE_STRING);
     $s->order_email = filter_var($setting['order_email'], FILTER_SANITIZE_STRING);
     $s->description = filter_var($setting['description'], FILTER_SANITIZE_STRING);
+    $s->facebook = filter_var($setting['facebook'], FILTER_SANITIZE_STRING);
+    $s->twitter = filter_var($setting['twitter'], FILTER_SANITIZE_STRING);
+    $s->googleplus = filter_var($setting['googleplus'], FILTER_SANITIZE_STRING);
+    $s->youtube = filter_var($setting['youtube'], FILTER_SANITIZE_STRING);
+    $s->viber = filter_var($setting['viber'], FILTER_SANITIZE_STRING);
+    $s->whatsapp = filter_var($setting['whatsapp'], FILTER_SANITIZE_STRING);
+    $s->skype = filter_var($setting['skype'], FILTER_SANITIZE_STRING);
 
     try{
         $mapper = new Setting($this->db, $this->logger);

@@ -55,6 +55,8 @@ $app->put('/admin/banner', function(Request $req, Response $res) {
     $b = new \stdClass();
     $b->id = filter_var($banner['id'], FILTER_SANITIZE_NUMBER_INT);
     $b->position = filter_var($banner['position'], FILTER_SANITIZE_STRING);
+    $b->title = filter_var($banner['title'], FILTER_SANITIZE_STRING);
+    $b->link = filter_var($banner['link'], FILTER_SANITIZE_STRING);
 
     try{
         $mapper = new Banner($this->db, $this->logger);
@@ -103,6 +105,9 @@ $app->delete('/admin/banner/{id}', function(Request $req, Response $res, $args) 
     $id = $args['id'];
     try{
         $mapper = new Banner($this->db, $this->logger);
+        $banner = $mapper->getBanner($id);
+        $this->logger->addInfo($banner->banner);
+        unlink("../public/uploads/banner/" . $banner->banner);
         $no_of_deleted_record = $mapper->deleteBanner($id);
         $result = [
             'status' => 200,
@@ -131,6 +136,8 @@ $app->post('/admin/uploadbanner', function(Request $request, Response $response)
     $photo = $data['myFile'];
     $filename = $data['filename'];
     $position = $data['position'];
+    $title = filter_var($data['title'], FILTER_SANITIZE_STRING);
+    $link = filter_var($data['link'], FILTER_SANITIZE_STRING);
 
     $secret = $data['secret'];
     if ($secret != 'SudeepsSecret') {
@@ -145,8 +152,8 @@ $app->post('/admin/uploadbanner', function(Request $request, Response $response)
     $file = $upload_dir . $filename;
     try{
         $mapper = new Banner($this->db, $this->logger);
-        $no_of_updated_record = $mapper->addBanner($filename, $position, $id);
-        $this->logger->addInfo('banner updated ' . $no_of_updated_record);
+        $no_of_added_record = $mapper->addBanner($filename, $position, $title, $link, $id);
+        $this->logger->addInfo('banner updated ' . $no_of_added_record);
 
         $success = file_put_contents($file, $imagedata);
         $result = [
